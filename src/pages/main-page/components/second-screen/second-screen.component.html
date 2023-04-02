@@ -1,0 +1,157 @@
+<div class="second-screen">
+  <div class="about">
+      <h2 data-r="О чём" data-e="About" class="L">About</h2>
+      
+      <div class="about__menu">
+          <div class="about__menu_about-me element L" (mouseover)="aboutMouseover(1)"
+          data-r="Обо мне" data-e="About me">About me</div>
+          <span></span>
+          <div class="about__menu_skills element L" (mouseover)="aboutMouseover(2)"
+          data-r="Навыки" data-e="Skills">Skills</div>
+          <span></span>
+          <div class="about__menu_experience element L" (mouseover)="aboutMouseover(3)"
+          data-r="Опыт" data-e="Experience">Experience</div>
+          <span></span>
+          <div class="about__menu_contacts element L" (mouseover)="aboutMouseover(4)"
+          data-r="Контакты" data-e="Contacts">Contacts</div>
+          <span></span>
+      </div>
+  </div>
+
+
+  <div id="pages">
+      <div class="about-me" [class.active]="">
+          <h2 data-r="Обо мне" data-e="About me" class="L">About me</h2>
+          <div class="about-me__cont" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+              <div class="frame">
+                  <div>
+                      <div>
+                          <div>
+                              <img src="../img/my-photo.jpg" alt="my-photo">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <p 
+              data-r="26 лет
+                  Оптимист с техническим взглядом на мир. Спокойный, терпеливый и амбициозный. Практикую собственную технику управления временем на основе метода Помидора. Совершенствуюсь в скорости набора текста. Люблю делать различного рода интерактивные анимации и игры. Веду здоровый образ жизни, увлекаюсь философией, активно занимаюсь спортом и изучаю английский. 
+                  Считаю, что цель - это именно то, что нужно для счастливой жизни.
+                  Служил в армии, холост." 
+              data-e="I'm 26 years old
+                  An optimist with a technical outlook on the world. Calm, patient and ambitious. I practice my own time management technique based on the Tomato method. Improving the speed of typing. Like to make various kinds of interactive animations and games. Lead a healthy lifestyle, fond of philosophy, active in sports and learn English. 
+                  Believe that the goal is exactly what you need for a happy life.
+                  Served in the army, single."
+              class="L" >
+                  I'm 26 years old
+                  An optimist with a technical outlook on the world. Calm, patient and ambitious.
+                  I practice my own time management technique based on the Tomato method.
+                  Improving the speed of typing.
+                  Like to make various kinds of interactive animations and games.
+                  Lead a healthy lifestyle, fond of philosophy, active in sports and learn English.
+                  Believe that the goal is exactly what you need for a happy life.
+                  Served in the army, single.
+              </p>
+          </div>
+      </div>
+
+      <div class="skills">
+          <h2 data-r="Навыки" data-e="Skills" class="L">Skills</h2>
+          <div class="skills__cont">
+              <div>
+                  <div class="skills__cont_html">
+                      <p>HTML5</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_css">
+                      <p>CSS3</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_js">
+                      <p>JavaScript</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_jquery">
+                      <p>jQuery</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_vue">
+                      <p>Vue</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_php">
+                      <p>PHP</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_gulp">
+                      <p>Gulp</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_sass">
+                      <p>SASS</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_ps">
+                      <p>PhotoShop</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_vs">
+                      <p>Visual Studio</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_ajax">
+                      <p>Ajax</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_react">
+                      <p>React</p> 
+                      <span class="line"></span>
+                  </div>
+                  <div class="skills__cont_english">
+                      <p>English</p> 
+                      <span class="line"></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="experience">
+          <h2 data-r="Опыт" data-e="Experience" class="L">Experience</h2>
+          <div class="experience__cont">
+              <p class="L" 
+              data-r="Работы представленные в портфолио - только часть того, что я делал для практики." 
+              data-e="The work that is presented in my portfolio is only the third part of what I did myself for practice.">
+                  The work that is presented in my portfolio is only the third part of what I did myself for practice. 
+              </p>
+              <p class="L" 
+              data-r="Также у меня есть пять месяцев коммерческого опыта в офисе (OP Linux). Работал в основном с CMS FlexcoreCMS: интеграция, отладка, перенос сайтов, адаптация сайтов для мобильных устройств и планшетов, встраивание ajax и т. д." 
+              data-e="I also have five months of commercial experience in the office (OP Linux). Worked primarily with CMS FlexcoreCMS: integration, debugging, site transfer, site adaptation for mobile devices and tablets, embedding ajax and so on...">
+                  I also have five months of commercial experience in the office (OP Linux). Worked primarily with CMS FlexcoreCMS: integration, debugging, site transfer, site adaptation for mobile devices and tablets, embedding ajax and so on...
+              </p>
+              <p class="L" 
+              data-r="В моем портфолио два сайта, сделанные мной с нуля:" 
+              data-e="In my portfolio two sites made by me from the beginning:">
+                  In my portfolio two sites made by me from the beginning:
+              </p>
+                  &nbsp;&nbsp;<a href="https://oreshka.msk.ru">https://oreshka.msk.ru</a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://jptica.flexcore.ru">http://jptica.flexcore.ru</a>
+              <p class="L" 
+              data-r="Знаком с PHP - писал простые сниппеты в работе, также использовал его в собственных проектах. Очень нравится Vue JS - Photo-Cut, Brain и Diagram были сделаны при помощи Vue." 
+              data-e="Familiar with PHP - wrote simple snippets, also used it in my own projects. Excited by Vue js - Photo-cut, Brain and Diagram were made entirely with Vue."> 
+                  Familiar with PHP - wrote simple snippets, also used it in my own projects. Excited by Vue js - Photo-cut, Brain and Diagram were made entirely with Vue.
+              </p>
+              <p class="L" 
+              data-r="Сейчас активно изучаю React js - делаю на нем свой проект." 
+              data-e="Now I'm actively studying the React js and doing my project on it.">
+                  Now I'm actively studying the React js and doing my project on it.
+          </div>
+      </div>
+
+      <div class="contacts">
+          <h2></h2>
+          <div>
+              <a href="tel:+79777872997">+7(977)-787-29-97</a>
+              <a href="mailto: fred_gad@mail.ru">fred_gad@mail.ru</a>
+          </div>
+      </div>
+  </div>
+</div>

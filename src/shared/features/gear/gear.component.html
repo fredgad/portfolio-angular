@@ -1,0 +1,10 @@
+<div class="field" [ngStyle]="{
+  'top': positionTop,
+  'left': positionLeft
+  }">
+  <div class="cont">
+    <div *ngFor="let img of gearImages | trackByProperty: 'name'" [class]="img.name">
+      <div [appBackgroundImage]="img.path"></div>
+    </div>
+  </div>
+</div>

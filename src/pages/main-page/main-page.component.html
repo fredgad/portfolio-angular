@@ -1,0 +1,10 @@
+<div class="main-wrapper">
+  <app-gear [screen]="currentScreen"></app-gear>
+
+  <div class="screens" [@screensTrigger]="screens[currentScreen]">
+    <app-first-screen></app-first-screen>
+    <app-second-screen (aboutEntered)="onAboutEntered($event)"></app-second-screen>
+    <app-third-screen></app-third-screen>
+    <app-fourth-screen></app-fourth-screen>
+  </div>
+</div>
