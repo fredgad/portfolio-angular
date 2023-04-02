@@ -26,6 +26,7 @@
       "@shared/*": ["src/shared/*"],
       "@directives": ["src/shared/common/directives"],
       "@tokens": ["src/shared/common/tokens"],
+      "@interfaces": ["src/shared/interfaces"],
       "@images/*": ["src/assets/images/*"],
     }
   },

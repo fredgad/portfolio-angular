@@ -11,8 +11,10 @@ export interface ErrorList {
   errorList: ResponseErrorListItemPropsI[];
 }
 
-export interface CubeStatePropsI {
-  data: {
-    CubePositions: string[];
-  };
+export interface GenericKeyStringObject<T> {
+  [key: string]: T;
+}
+
+export interface State {
+  _empty?: boolean;
 }

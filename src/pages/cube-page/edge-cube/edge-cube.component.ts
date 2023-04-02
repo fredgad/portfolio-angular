@@ -1,18 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  CubeColorsI,
+  CubePositionI,
+  GenericKeyStringObject,
+} from '@interfaces';
+import { TrackByPropertyPipe } from '../../../shared/common/pipes/track-by-property.pipe';
+import { CubeColors } from '../store/cube.constants';
 
 @Component({
   selector: 'app-edge-cube',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TrackByPropertyPipe],
   templateUrl: './edge-cube.component.html',
-  styleUrls: ['./edge-cube.component.scss']
+  styleUrls: ['./edge-cube.component.scss'],
 })
 export class EdgeCubeComponent implements OnInit {
+  @Input() public classInput: string = '';
 
-  constructor() { }
+  public cubeColors: CubeColorsI = {
+    top: '',
+    front: '',
+    right: '',
+    bot: '',
+    back: '',
+    left: '',
+  };
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.cubeColors = CubeColors[this.classInput];
   }
 
+  public trackByFn(_: number, item: { key: string; value: string }): string {
+    return item.key;
+  }
 }

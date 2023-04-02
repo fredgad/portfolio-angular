@@ -1,25 +1,41 @@
-// import { Action, createReducer, on } from '@ngrx/store';
-// import { ChatBotBodyResponse } from '@lentau/lu/common/app-wide/shared';
-// import { getErrorMessageFromErrorList } from '@lentau/lu/common/core/shared/helpers/texting';
+import { Action, createReducer, on } from '@ngrx/store';
+import * as CubeActions from './cube.actions';
+import { CubeStatePropsI } from '@interfaces';
+import { AppWithCubeState } from './cube.selectors';
+import { CubeInitialPositions } from './cube.constants';
 
-// import * as CubeActions from './app-wide.actions';
-// import { CubeStatePropsI } from '../shared/interfaces';
+export const storeFeatureKey = 'Cube';
 
-// export const storeFeatureKey = 'appWide';
+export const initialState: CubeStatePropsI = {
+  data: {
+    CubePositions: CubeInitialPositions,
+  },
+};
 
-// export const initialState: CubeStatePropsI = {
-//   data: {
-//     CubePositions: []
-//   }
-// };
+const cubeReducer = createReducer(
+  initialState,
+  on(CubeActions.addCubePositions, (state, { props }) => {
+    console.log(state, props, ' addCubePositions : state, props');
+    return {
+      ...state,
+      data: {
+        CubePositions: {
+          ...state.data.CubePositions,
+          [props.key]: {
+            ...state.data.CubePositions[props.key],
+            ...props.values,
+          },
+        },
+      },
+    };
+  })
+  // on(CubeActions.getPageFail, (state) => ({ ...state, loading: false })),
+  // on(CubeActions.getPageSuccess, (state, { data }): AppWideStateProps => ({ ...state, data, loading: false })),
+);
 
-// const cubeReduce = createReducer(
-//   initialState,
-//   on(AppWideActions.getPageData, (state) => ({ ...state, loading: true })),
-//   on(AppWideActions.getPageFail, (state) => ({ ...state, loading: false })),
-//   on(AppWideActions.getPageSuccess, (state, { data }): AppWideStateProps => ({ ...state, data, loading: false })),
-// );
-
-// export function reducer(state: AppWideStateProps | undefined, action: Action) {
-//   return cubeReducer(state, action);
-// }
+export function reducerCube(
+  state: CubeStatePropsI | undefined,
+  action: Action
+) {
+  return cubeReducer(state, action);
+}

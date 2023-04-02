@@ -11,7 +11,7 @@
 // import { AppWithCityState, getCityIdByGeo } from '@lentau/lu/common/city/entities';
 
 // @Injectable()
-// export class AppWideEffects implements OnInitEffects {
+// export class CubeEffects implements OnInitEffects {
 //   getSiteSettings$ = createEffect(
 //     (): Observable<Action> =>
 //       this.actions$.pipe(
