@@ -1,3 +1,8 @@
+import { GearImagesI, GearPositionsI } from '@interfaces';
+
+export const MAX_GEAR_SCREEN = 3;
+export const MIN_GEAR_SCREEN = 0;
+
 export const GearImages: GearImagesI[] = [
   {
     name: 'zero',
@@ -49,7 +54,9 @@ export const GearImages: GearImagesI[] = [
   },
 ];
 
-export interface GearImagesI {
-  name: string;
-  path: string;
-}
+export const GearPositions: GearPositionsI[] = [
+  { top: 'calc(50vh - 5rem)', left: 'calc(50vw - 5rem)' },
+  { top: 'calc(50vh - 5rem)', left: 'calc(50vw - 5rem)' },
+  { top: '50px', left: '90vw' },
+  { top: '50px', left: '90vw' },
+];

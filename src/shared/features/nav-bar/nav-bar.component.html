@@ -1,49 +1,19 @@
-<div id="nav">
-  <div class="hide__circle">
-      <div class="circle"></div>
+<div id="nav" [class.navOpen]="isOpenNav" (click)="toggleNav()">
+  <div class="hide__circle" [class.hideOut]="isOpenNav">
+      <div class="circle" [class.circleOut]="isOpenNav"></div>
   </div>
-  <div class="navbar">
-      <div class="navbar__line">
-          <a href=""
-          data-r="Главная" data-e="Main" class="L">Main</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Игра" data-e="Game" class="L">Game</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Таймер" data-e="Timer" class="L">Timer</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Качества мозга" data-e="Brain" class="L">Brain</a>
-      </div> 
-      <div class="navbar__line">
-          <a href=""
-          data-r="Onpoint тест" data-e="Onpoin test" class="L">Onpoin test</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Фоторез" data-e="Photocut" class="L">Photocut</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Пузырьки" data-e="Bubbles" class="L">Bubbles</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Диаграмма" data-e="Some diagram" class="L">Some diagram</a>
-      </div>
-      <div class="navbar__line">
-          <a href=""
-          data-r="Валидация формы" data-e="Form validation" class="L">Ida-project test</a>
-      </div>
+
+  <div class="navbar" [@navBarTrigger]="isOpenNav ? navEnum.OPEN : navEnum.CLOSED">
+    <div *ngFor="let barPoint of barMenu" class="navbar__line" [class.open]="barPoint.state">
+        <a [href]="barPoint.link">{{ barPoint.name }}</a>
+    </div>
   </div>
+
   <div id="navButton">
       <div class="top"></div>
       <div class="mid"></div>
       <div class="bot"></div>
   </div>
 </div>
-<div id="navWall"></div>
+
+<div id="navWall" [class.wallOpen]="isOpenNav"></div>

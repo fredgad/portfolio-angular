@@ -11,7 +11,7 @@ import {
   CubePositionI,
   CubePositionsI,
   GenericKeyStringObject,
-} from '@interfaces';
+} from '@shared/common/interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({

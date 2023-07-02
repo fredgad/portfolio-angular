@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './third-screen.component.html',
-  styleUrls: ['./third-screen.component.scss']
+  styleUrls: ['./third-screen.component.scss'],
 })
 export class ThirdScreenComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

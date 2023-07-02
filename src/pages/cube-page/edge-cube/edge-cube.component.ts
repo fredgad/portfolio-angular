@@ -4,7 +4,7 @@ import {
   CubeColorsI,
   CubePositionI,
   GenericKeyStringObject,
-} from '@interfaces';
+} from '@shared/common/interfaces';
 import { TrackByPropertyPipe } from '../../../shared/common/pipes/track-by-property.pipe';
 import { CubeColors } from '../store/cube.constants';
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (click)="funcEvent()">
   <div class="cube c_c_M">
     <app-edge-cube 
       *ngFor="let position of cubePositions$ | async | keyvalue; trackBy: trackByFn"
@@ -11,5 +11,5 @@
     </app-edge-cube>
   </div>
 </div>
-<!-- (click)="funcTestX()" (wheel)="funcTestY()" -->
-<!-- 'transition': '1s',  -->
+
+<a href="./">Main</a>

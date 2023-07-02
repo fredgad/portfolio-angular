@@ -110,7 +110,7 @@
       transform-style: preserve-3d;
 
       > div:hover {
-        border: 1px solid gold;
+        box-shadow: inset 2px 2px 10px gold, inset -2px -2px 10px gold;
       }
 
       div {

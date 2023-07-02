@@ -1,8 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BackgroundImageDirective } from '@shared/common/directives';
 import { TrackByPropertyPipe } from '../../common/pipes/track-by-property.pipe';
-import { GearImages, GearImagesI } from './constants';
+import { GearImagesI, GearPositionsI } from '@interfaces';
+import { GearService } from '@services';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { GearImages } from '@constants';
 
 @Component({
   selector: 'app-gear',
@@ -11,14 +14,26 @@ import { GearImages, GearImagesI } from './constants';
   templateUrl: './gear.component.html',
   styleUrls: ['./gear.component.scss'],
 })
-export class GearComponent implements OnInit {
+export class GearComponent implements OnDestroy {
   @Input() screen: number = 0;
-  @Input() positionTop: string = 'calc(50vh - 5rem)';
-  @Input() positionLeft: string = 'calc(50vw - 5rem)';
 
+  public topPos: string = '';
+  public leftPos: string = '';
+
+  public gearPosition$: BehaviorSubject<GearPositionsI> =
+    this.gearService.gearPosition$;
   public gearImages: GearImagesI[] = GearImages;
 
-  constructor() {}
+  private subscription: Subscription;
 
-  ngOnInit(): void {}
+  constructor(private gearService: GearService) {
+    this.subscription = this.gearPosition$.subscribe((position) => {
+      this.topPos = position.top;
+      this.leftPos = position.left;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 }

@@ -2,7 +2,7 @@ import {
   CubeColorsI,
   CubePositionI,
   GenericKeyStringObject,
-} from '@interfaces';
+} from '@shared/common/interfaces';
 
 export const CubeInitialPositions: GenericKeyStringObject<CubePositionI> = {
   t_l_F: { posX: 1, posY: 1, axes: ['A-1', 'B-1', 'C-1'] },

@@ -6,7 +6,7 @@ import {
   CubePositionsI,
   GenericKeyStringObject,
   CubePositionI,
-} from '@interfaces';
+} from '@shared/common/interfaces';
 
 export interface AppWithCubeState extends State {
   [storeFeatureKey]: CubeStatePropsI;

@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as CubeActions from './cube.actions';
-import { CubeStatePropsI } from '@interfaces';
+import { CubeStatePropsI } from '@shared/common/interfaces';
 import { AppWithCubeState } from './cube.selectors';
 import { CubeInitialPositions } from './cube.constants';
 
@@ -15,7 +15,7 @@ export const initialState: CubeStatePropsI = {
 const cubeReducer = createReducer(
   initialState,
   on(CubeActions.addCubePositions, (state, { props }) => {
-    console.log(state, props, ' addCubePositions : state, props');
+    // console.log(state, props, ' addCubePositions : state, props');
     return {
       ...state,
       data: {

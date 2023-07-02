@@ -6,13 +6,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './first-screen.component.html',
-  styleUrls: ['./first-screen.component.scss']
+  styleUrls: ['./first-screen.component.scss'],
+  // providers: [EventsService],
 })
 export class FirstScreenComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

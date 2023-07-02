@@ -1,13 +1,16 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, Self } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { FirstScreenComponent } from './components/first-screen/first-screen.component';
 import { SecondScreenComponent } from './components/second-screen/second-screen.component';
 import { ThirdScreenComponent } from './components/third-screen/third-screen.component';
 import { FourthScreenComponent } from './components/fourth-screen/fourth-screen.component';
-import { interval, Observable, Subscription, takeWhile, timer } from 'rxjs';
-import { screensArray } from './constants';
+import { interval, Subscription, takeWhile, timer } from 'rxjs';
+import { screensArray } from '@constants';
 import { GearComponent } from '../../shared/features/gear/gear.component';
-import { ScreensAnimation } from '../../shared/animations/mai-page.animation';
+import { ScreensAnimation } from '../../shared/common/animations/mai-page.animation';
+import { ParentDirective } from '../../shared/common/directives';
+import { GearService } from '@services';
+import { EventsService } from '@services';
 
 @Component({
   selector: 'app-main-page',
@@ -19,31 +22,61 @@ import { ScreensAnimation } from '../../shared/animations/mai-page.animation';
     ThirdScreenComponent,
     FourthScreenComponent,
     GearComponent,
+    ParentDirective,
   ],
   animations: [ScreensAnimation],
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
+  providers: [EventsService],
 })
 export class MainPageComponent implements OnInit {
-  public currentScreen: number = 0;
+  public currentScreen: number = this.gearService.currentScreen$.value;
   public screens: string[] = screensArray;
+
+  public newFontSize: number = 10;
 
   private aboutEntered: boolean = false;
   private delay: boolean = false;
   private subscription: Subscription = new Subscription();
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private gearService: GearService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.gearService.currentScreen$.subscribe((screen) => {
+      this.currentScreen = screen;
+      this.newFontSize = 10;
 
-  public onAboutEntered(value: boolean): void {
+      switch (screen) {
+        case 0:
+          this.newFontSize = 10;
+          break;
+        case 1:
+          this.newFontSize = 1.5;
+          break;
+        case 2:
+          this.newFontSize = 3;
+          break;
+        case 3:
+          this.newFontSize = 3;
+          break;
+      }
+    });
+
+    this.gearService.gearPosition$.subscribe((x) => {
+      console.log(x, 'x');
+    });
+  }
+
+  public onTabsEntered(value: boolean): void {
     this.aboutEntered = value;
   }
 
   @HostListener('window:wheel', ['$event']) onWindowScroll(
     event: WheelEvent
   ): void {
-    console.log(this.aboutEntered);
     if (!this.delay && !this.aboutEntered) {
       this.screenCounter(event);
     }
@@ -53,9 +86,9 @@ export class MainPageComponent implements OnInit {
     this.delay = true;
 
     if (event.deltaY > 0) {
-      this.currentScreen !== 3 && this.currentScreen++;
+      this.gearService.nextScreen();
     } else {
-      this.currentScreen !== 0 && this.currentScreen--;
+      this.gearService.prevScreen();
     }
 
     this.changeGearSize();
@@ -71,17 +104,17 @@ export class MainPageComponent implements OnInit {
     const fontSize = styles.getPropertyValue('font-size');
 
     let currentSize = Number(fontSize.split('px')[0]);
-    let neededSize = this.defineNeededSize();
-    let direction = currentSize - neededSize;
+    // let neededSize = this.defineNeededSize();
+    let direction = currentSize - this.newFontSize;
 
     this.subscription.add(
       interval(1)
         .pipe(
           takeWhile(() => {
             if (direction > 0) {
-              return currentSize > neededSize;
+              return currentSize > this.newFontSize;
             } else {
-              return currentSize < neededSize;
+              return currentSize < this.newFontSize;
             }
           })
         )
@@ -96,27 +129,11 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  private defineNeededSize(): number {
-    let fontSize = 10;
-    switch (this.currentScreen) {
-      case 0:
-        fontSize = 10;
-        break;
-      case 1:
-        fontSize = 2;
-        break;
-      case 2:
-        fontSize = 3;
-        break;
-      case 3:
-        fontSize = 3;
-        break;
-    }
-
-    return fontSize;
-  }
-
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  // public ngOnDestroy(): void {
+  //   this.subscriptions.forEach((s) => s?.unsubscribe());
+  // }
 }
